@@ -1,15 +1,8 @@
-<img src="EventsSystem_Video.git" width="60%" height="60%">
-<video width="320" height="240" controls>
-  <source src="EventsSystem.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-
-## Video Link 
-<a href="https://drive.google.com/file/d/1njVrfPy1w4hYqGvhfig9nmj9_EY44Rb8/view?usp=sharing">Video</a>
-
 <h1> Events Management System </h1>
 For managing event planning, event creation and adding speakers and students (attendants) to it.
 
+## Video Link 
+<a href="https://drive.google.com/file/d/1njVrfPy1w4hYqGvhfig9nmj9_EY44Rb8/view?usp=sharing" target="_blank">View Video</a>
 
 ## This project is containing 2 main parts 
 Server Side : 
