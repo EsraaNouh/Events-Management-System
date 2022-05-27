@@ -6,17 +6,18 @@ For managing event planning, event creation and adding speakers and students (at
 
 ## This project is containing 2 main parts 
 Server Side : 
-              RESTful API using Node.js
+              RESTful API using Node.js <br>
               you can run: nodemon System.js
+<br>
 
 Client Side : 
-              Using Angular 
+              Using Angular <br>
               you can run: ng serve --o
 
 ## Main Users:
-1. ### Admin 
-2. ### Student
-3. ### Speaker
+1. Admin <br>
+2. Student <br>
+3. Speaker <br>
 
 ### Admin User Privileges:
     * It is only one account that has the permission to create and manage events.
