@@ -1,0 +1,29 @@
+<h1 class="text-center">Student {{std.email}} Details</h1>
+<div class="container">
+    Student Id : <label>{{std._id}}</label>
+    <br>
+    Student Email :<label>{{std.email}}</label>
+    <br> <br>
+    Registered Events : 
+    <br>
+    <table class="table table-bordered text-center m-2">
+        <thead>
+            <tr>
+                <th>Event Title</th>
+                <th>Event Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of events">
+                <td>{{e.title}}</td>
+                <td>{{e.event_date | date:'MMMM dd, yyyy'}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center" *ngIf="this.UserService.getUser().role == 'admin'">
+    <button class="btn btn-outline-warning" (click)="Back()">Back to list</button>
+    </div>
+    <div class="text-center" *ngIf="this.UserService.getUser().role == 'student'">
+        <button class="btn btn-primary" (click)="Edit()">Edit your profile</button>
+    </div>
+</div>

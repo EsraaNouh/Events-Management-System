@@ -1,0 +1,49 @@
+<h1 class="text-center">Edit Speaker {{sp.userName}}</h1>
+<div class="container">
+    Id <input type="text" class="form-control" [(ngModel)]="sp._id" readonly>
+    Email <input type="text" class="form-control" [(ngModel)]="sp.email">
+    User Name <input type="text" class="form-control" [(ngModel)]="sp.userName">
+    <label class="w-100">Address</label>
+    City <input type="text" [(ngModel)]="sp.address.city">
+    Street <input type="text" [(ngModel)]="sp.address.street">
+    Building no. <input type="text" [(ngModel)]="sp.address.building">
+    <div class="text-center">
+        <br>
+        <span class="container m-2 text-danger">{{message}}</span>
+        <div class="text-center" *ngIf="this.UserService.getUser().role=='admin'">
+            <button class="btn btn-outline-warning m-2" (click)="Back()">Back to list</button>
+            <button class="btn btn-primary m-2" (click)="Save()">Save</button>
+        </div>
+        <div class="text-center" *ngIf="this.UserService.getUser().role=='speaker'">
+            <button class="btn btn-outline-danger m-2" (click)="displayStyle = 'block'">Change your password</button>
+            <button class="btn btn-primary m-2" (click)="Save()">Save</button>
+        </div>
+    </div>
+</div>
+<!-- change password Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                    (click)="displayStyle = 'none'"></button>
+            </div>
+            <div class="form-floating container m-2">
+                <input type="password" class="form-control m-0" id="floatingPassword" placeholder="Password" required
+                    [(ngModel)]="sp.password">
+                <label for="floatingPassword">  New Password</label>
+            </div>
+            <div class="form-floating container m-2">
+                <input type="password" class="form-control m-0" id="floatingPassword" placeholder="Confirm Password" required
+                    [(ngModel)]="confirmPassword">
+                <label for="floatingPassword">  Confirm Password</label>
+            </div>
+            <span class="container m-2 text-danger">{{message}}</span>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="displayStyle = 'none'">Close</button>
+                <button type="button" class="btn btn-primary" (click)="ChangePass()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

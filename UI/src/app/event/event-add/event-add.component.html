@@ -1,0 +1,25 @@
+<h1>Add Event</h1>
+<div class="container">
+    Id <input type="text" class="form-control" [(ngModel)]="event._id">
+    Title <input type="text" class="form-control" [(ngModel)]="event.title">
+    Date <input type="date" class="form-control" [(ngModel)]="date">
+
+    Main Speaker
+    <select class="form-control" [(ngModel)]="event.mainSpeaker_id">
+        <option *ngFor="let sp of allSpeakers" value="{{sp._id}}">{{sp.userName}}</option>
+    </select>
+    other speakers
+    <select class="form-control" multiple [(ngModel)]="event.otherSpeakers_ids">
+        <option *ngFor="let sp of allSpeakers" value="{{sp._id}}">{{sp.userName}}</option>
+    </select>
+    Students
+    <select class="form-control" multiple [(ngModel)]="event.students_ids">
+        <option *ngFor="let std of allStudents" value="{{std._id}}">{{std.email}}</option>
+    </select>
+    <div class="text-center">
+        <br>
+        <span class="container m-2 text-danger">{{message}}</span>
+        <button class="btn btn-primary m-2" (click)="Add()">Save</button>
+    </div>
+
+</div>

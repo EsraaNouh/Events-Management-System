@@ -1,0 +1,65 @@
+<main class="d-flex flex-nowrap" >
+    <div class="flex-shrink-0 p-3 bg-white " style="width: 170px;">
+      <ul class="list-unstyled ps-0">
+        <li class="mb-1">
+          <i class="fa-solid fa-bars m-2 px-2"></i>
+        </li>
+        <li class="mb-1">
+        <div *ngIf="stdmenu; else e1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true" (click)="stdmenu=!stdmenu">
+            Student
+          </button>
+          <div class="collapse show">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a [routerLink]="'student'" class="link-dark d-inline-flex text-decoration-none rounded">List</a></li>
+              </ul>
+          </div>
+        </div>
+        <ng-template #e1>
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false" (click)="stdmenu=!stdmenu">
+                Student
+              </button>
+        </ng-template>
+        </li>
+        <li class="mb-1">
+            <div *ngIf="spmenu; else e2">
+              <button  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true" (click)="spmenu=!spmenu">
+                Speaker
+              </button>
+              <div class="collapse show">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a [routerLink]="'speaker'" class="link-dark d-inline-flex text-decoration-none rounded">List</a></li>
+                  </ul>
+              </div>
+            </div>
+            <ng-template #e2>
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false" (click)="spmenu=!spmenu">
+                    Speaker
+                  </button>
+            </ng-template>
+            </li>
+            <li class="mb-1">
+                <div *ngIf="evmenu; else e3">
+                  <button  class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true" (click)="evmenu=!evmenu">
+                    Event
+                  </button>
+                  <div class="collapse show">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li><a [routerLink]="'event'" class="link-dark d-inline-flex text-decoration-none rounded">List</a></li>
+                      <li><a [routerLink]="'event/add'" class="link-dark d-inline-flex text-decoration-none rounded">Add</a></li>
+                      </ul>
+                  </div>
+                </div>
+                <ng-template #e3>
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false" (click)="evmenu=!evmenu">
+                        Event
+                      </button>
+                </ng-template>
+                </li>
+      </ul>
+    </div>
+    <div class="container text-center">
+      <router-outlet></router-outlet>
+    </div>
+
+  </main>

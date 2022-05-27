@@ -1,0 +1,53 @@
+<h1>{{ev.title}} Event Details</h1>
+<div class="container">
+    Event Id : <label>{{ev._id}}</label>
+    <br>
+    Event Tiltle :<label>{{ev.title}}</label>
+    <br>
+    Event Date :<label>{{ev.event_date | date:'MMMM dd, yyyy'}}</label>
+    <br>
+    Main Speker : <label>{{mainSpeaker.userName}}</label>
+    <br>
+    <div class="row">
+        <div class="col-8 p-2">
+            Other Speakers :
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Speaker Email</th>
+                        <th>Speaker UserName</th>
+                        <th>Speaker Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of speakers; let i =index;">
+                        <td>{{i+1}}</td>
+                        <td>{{s.email}}</td>
+                        <td>{{s.userName}}</td>
+                        <td> {{s.address.building}} {{s.address.street}} , {{s.address.city}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4 p-2">
+            Students:
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Student Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of students; let i =index;">
+                        <td>{{i+1}}</td>
+                        <td>{{s.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-outline-warning" (click)="Back()">Back to list</button>
+</div>

@@ -1,0 +1,146 @@
+<h1>Edit {{ev.title}} Event</h1>
+<div class="container">
+    Id <input type="text" class="form-control" [(ngModel)]="ev._id" readonly>
+    Title <input type="text" class="form-control" [(ngModel)]="ev.title">
+    Date <input type="date" class="form-control" [(ngModel)]="date">
+
+    Main Speaker
+    <select class="form-control" [(ngModel)]="ev.mainSpeaker_id">
+        <option *ngFor="let sp of allSpeakers" value="{{sp._id}}">{{sp.userName}}</option>
+    </select>
+    <div class="row">
+        <div class="col-6 p-2">
+            <div class="text-center">
+                <button class="btn btn-outline-primary m-2" (click)="displayStyleAddSp = 'block'">Add speakers</button>
+                <button class="btn btn-outline-success m-2" (click)="displayStyleChngSp = 'block'">Change
+                    speakers</button>
+            </div>
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Speakers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of speakers">
+                        <td>{{s.userName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 p-2">
+            <div class="text-center">
+                <button class="btn btn-outline-primary m-2" (click)="displayStyleAddStd = 'block'">Add students</button>
+                <button class="btn btn-outline-success m-2" (click)="displayStyleChngStd = 'block'">Change
+                    students</button>
+            </div>
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>Students</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of students">
+                        <td>{{s.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="text-center">
+        <br>
+        <span class="container m-2 text-danger">{{message}}</span>
+        <button class="btn btn-outline-warning m-2" (click)="Back()">Back to list</button>
+        <button class="btn btn-primary m-2" (click)="Save()">Save</button>
+    </div>
+
+</div>
+<!-- Add Speakers Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleAddSp}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Speakers</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                    (click)="displayStyleAddSp = 'none'"></button>
+            </div>
+            <h6 class="mx-2 px-2 mt-2">Select speakers: </h6>
+            <div class="modal-body">
+                <select class="form-control" multiple [(ngModel)]="Sparray">
+                    <option *ngFor="let sp of allSpeakers" value="{{sp._id}}">{{sp.userName}}</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="displayStyleAddSp = 'none'">Close</button>
+                <button type="button" class="btn btn-primary" (click)="AddSpeakers(); displayStyleAddSp = 'none'">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Change Speakers Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleChngSp}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Speakers</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                    (click)="displayStyleChngSp = 'none'"></button>
+            </div>
+            <h6 class="mx-4 px-2 mt-2">Select speakers: </h6>
+            <div class="modal-body">
+                <select class="form-control" multiple [(ngModel)]="Sparray">
+                    <option *ngFor="let sp of allSpeakers" value="{{sp._id}}">{{sp.userName}}</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="displayStyleChngSp = 'none'">Close</button>
+                <button type="button" class="btn btn-primary" (click)="ChangeSpeakers(); displayStyleChngSp = 'none'">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Students Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleAddStd}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Students</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                    (click)="displayStyleAddStd = 'none'"></button>
+            </div>
+            <h6 class="mx-2 px-2 mt-2">Select students: </h6>
+            <div class="modal-body">
+                <select class="form-control" multiple [(ngModel)]="Stdarray">
+                    <option *ngFor="let std of allStudents" value="{{std._id}}">{{std.email}}</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="displayStyleAddStd = 'none'">Close</button>
+                <button type="button" class="btn btn-primary" (click)="AddStudents(); displayStyleAddStd = 'none'">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Change Students Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyleChngStd}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Change Students</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                    (click)="displayStyleChngStd = 'none'"></button>
+            </div>
+            <h6 class="mx-4 px-2 mt-2">Select students: </h6>
+            <div class="modal-body">
+                <select class="form-control" multiple [(ngModel)]="Stdarray">
+                    <option *ngFor="let std of allStudents" value="{{std._id}}">{{std.email}}</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="displayStyleChngStd = 'none'">Close</button>
+                <button type="button" class="btn btn-primary" (click)="ChangeStudents();displayStyleChngStd = 'none' ">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
